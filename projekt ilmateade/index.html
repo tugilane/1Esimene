@@ -9,48 +9,82 @@
   <body>
     <header class="header">
 
-<div class="header-vasak large" src="public/assets/sunny.svg" data-current-icon >
+<div class="header-left" data-current-icon>
+  <img class="weather-icon large" src="public/assets/sunny.svg" type="image/svg+xml" data-current-icon>
   <div class="header-current-temp">
   <!--proovida ka <p> tagi spanide asemel--> <span data-current-temp>31</span>&deg;C
   </div>
 </div>
 
 <div class="header-right">
-  <div class="ingo-group">
-<div class="label">High</div>
-<div><span class="High">32</span>&deg;C</div>
-  </div>
+  <div class="info-group">
+<div class="label">Kõrgeim temp.</div>
+<div><span data-current-high>32</span>&deg;C</div>
 </div>
-<div class="ingo-group">
-  <div class="label">FL high</div>
-  <div><span class="FL high">32</span>&deg;C</div>
+<div class="info-group">
+  <div class="label">Tajutav kõrgeim temp.</div>
+  <div><span data-current-fl-high>32</span>&deg;C</div>
     </div>
-  </div>
-  <div class="ingo-group">
+  <div class="info-group">
     <div class="label">Tuul</div>
-    <div><span class="tuul">32</span>&deg;C</div>
+    <div><span data-current-wind>32</span><span class="value-sub-info">km/h</span></div>
       </div>
-    </div>
-    <div class="ingo-group">
-      <div class="label">low</div>
-      <div><span class="low">32</span>&deg;C</div>
+    <div class="info-group">
+      <div class="label">Madalaim temp.</div>
+      <div><span data-current-low>32</span>&deg;C</div>
         </div>
-      </div>
-      <div class="ingo-group">
-        <div class="label">FL low</div>
-        <div><span class="fl low">32</span>&deg;C</div>
+      <div class="info-group">
+        <div class="label">Tajutav madalaim temp.</div>
+        <div><span data-current-fl-low>32</span>&deg;C</div>
           </div>
-        </div>
-        <div class="ingo-group">
+        <div class="info-group">
           <div class="label">Sademed</div>
-          <div><span class="Sademed">32</span>&deg;C</div>
+          <div><span data-current-precip>0.2</span ><span class="value-sub-info">mm</span></div>
             </div>
           </div>
-
     </header>
 
+    <section class="day-section" data-day-section>
+<div class="day-card">
+  <img src="public/assets/cloudy.svg" alt="">
+<div class="day-card-day">Esmaspäev</div>
+<div>32&deg;C</div>
+</div>
+<div class="day-card">
+  <img src="public/assets/cloudy.svg" alt="">
+<div class="day-card-day">Teisipäev</div>
+<div>32&deg;C</div>
+</div>
+<div class="day-card">
+  <img src="public/assets/cloudy.svg" alt="">
+<div class="day-card-day">Kolmapäev</div>
+<div>32&deg;C</div>
+</div>
+<div class="day-card">
+  <img src="public/assets/cloudy.svg" alt="">
+<div class="day-card-day">Neljapäev</div>
+<div>32&deg;C</div>
+</div>
+<div class="day-card">
+  <img src="public/assets/cloudy.svg" alt="">
+<div class="day-card-day">Reede</div>
+<div>32&deg;C</div>
+</div>
+<div class="day-card">
+  <img src="public/assets/cloudy.svg" alt="">
+<div class="day-card-day">Laupäev</div>
+<div>32&deg;C</div>
+</div>
+<div class="day-card">
+  <img src="public/assets/cloudy.svg" alt="">
+<div class="day-card-day">Pühapäev</div>
+<div>32&deg;C</div>
+</div>
+    </section>
+    
+    <template>
 
-
+    </template>
 
     <script type="module" src="/main.js"></script>
   </body>
