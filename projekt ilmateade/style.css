@@ -1,11 +1,13 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
     color: black;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .blurred {
@@ -32,7 +34,8 @@ body {
 .weather-icon {
     width: 80px;
     height: 80px;
-    object-fit: contain; /* on vaja üldse? */
+    object-fit: contain;
+    /* on vaja üldse? */
 }
 
 .weather-icon.large {
@@ -45,8 +48,9 @@ body {
     margin-left: 3rem;
 }
 
-.header-right {  /* testida gridi lahendust */
-    
+.header-right {
+    /* testida gridi lahendust */
+
     display: grid;
     width: 50%;
     justify-content: space-around;
@@ -74,7 +78,7 @@ body {
 }
 
 .day-section {
-margin-top: 4rem;
+    margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, 150px);
     gap: 2rem;
@@ -95,4 +99,22 @@ margin-top: 4rem;
     font-size: 0.75rem;
     color: black;
     margin-top: 0.5rem;
+}
+
+.hour-section {
+    width: 100%;
+    text-align: center;
+    border-spacing: 0;
+}
+
+.hour-row {
+    background-color: aqua;
+}
+
+.hour-row:nth-child(2n) {
+    background-color: aqua;
+}
+
+.hour-row>td {
+    padding: 0.25rem 0.5rem;
 }
