@@ -8,40 +8,41 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body background="public/assets/pexels-aleksandar-pasaric-3629227.jpg">
+
   <header class="header">
 
     <div class="header-left" data-current-icon>
       <img class="weather-icon large" src="public/assets/sunny.svg" type="image/svg+xml" data-current-icon>
       <div class="header-current-temp">
-        <!--proovida ka <p> tagi spanide asemel--> <span data-current-temp>31</span>&deg;C
+        <!--proovida ka <p> tagi spanide asemel--> <span class="currentNum" data-current-temp>31</span>&deg;C
       </div>
     </div>
 
     <div class="header-right">
       <div class="info-group">
         <div class="label">Kõrgeim temp.</div>
-        <div><span data-current-high>32</span>&deg;C</div>
+        <div><span class="tempNum" data-current-high>32</span>&deg;C</div>
       </div>
       <div class="info-group">
         <div class="label">Tajutav kõrgeim temp.</div>
-        <div><span data-current-fl-high>32</span>&deg;C</div>
+        <div><span class="tempNum" data-current-fl-high>32</span>&deg;C</div>
       </div>
       <div class="info-group">
         <div class="label">Tuul</div>
-        <div><span data-current-wind>32</span><span class="value-sub-info">km/h</span></div>
+        <div><span class="tempNum" data-current-wind>32</span><span class="value-sub-info">km/h</span></div>
       </div>
       <div class="info-group">
         <div class="label">Madalaim temp.</div>
-        <div><span data-current-low>32</span>&deg;C</div>
+        <div><span class="tempNum" data-current-low>32</span>&deg;C</div>
       </div>
       <div class="info-group">
         <div class="label">Tajutav madalaim temp.</div>
-        <div><span data-current-fl-low>32</span>&deg;C</div>
+        <div><span class="tempNum" data-current-fl-low>32</span>&deg;C</div>
       </div>
       <div class="info-group">
         <div class="label">Sademed</div>
-        <div><span data-current-precip>0.2</span><span class="value-sub-info">mm</span></div>
+        <div><span class="tempNum" data-current-precip>0.2</span><span class="value-sub-info">mm</span></div>
       </div>
     </div>
   </header>
@@ -83,7 +84,6 @@
       <div>32&deg;C</div>
     </div>
   </section>
-
   <table class="hours-section">
     <tbody data-hour-section>
       <tr class="hour-now">

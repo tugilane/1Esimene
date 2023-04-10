@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    color: black;
+    color: rgb(39, 39, 39);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -44,8 +44,12 @@ body {
 }
 
 .header-current-temp {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-left: 3rem;
+}
+
+.currentNum {
+    font-size: 3rem;
 }
 
 .header-right {
@@ -59,6 +63,10 @@ body {
     grid-template-rows: repeat(2, auto);
 }
 
+.tempNum {
+    font-size: 1.5rem;
+}
+
 .info-group {
     display: flex;
     flex-direction: column;
@@ -68,13 +76,13 @@ body {
 .label {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     color: blue;
 }
 
 .value-sub-info {
     font-weight: lighter;
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
 
 .day-section {
@@ -101,10 +109,13 @@ body {
     margin-top: 0.5rem;
 }
 
-.hour-section {
-    width: 100%;
+.hours-section {
+    width: 95%;
     text-align: center;
     border-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .hour-row {
@@ -115,6 +126,8 @@ body {
     background-color: aqua;
 }
 
-.hour-row>td {
-    padding: 0.25rem 0.5rem;
+td {
+    padding: 1.5rem 1rem;
+    border: 1px solid black;
+    background-color: rgba(42, 74, 92, 0.39);
 }
