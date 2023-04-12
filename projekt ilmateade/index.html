@@ -369,6 +369,7 @@
     </tbody>
   </table>
 
+<!--Templates-->	
   <template id="day-card-template">
     <div class="day-card">
       <img data-current-icon>
@@ -376,7 +377,44 @@
       <div><span data-temp></span><span>&deg;C</span></div>
     </div>
   </template>
-  <template id="day-card-template"></template>
+  <template id="hour-row-template">
+    <tr class="hour-now">
+      <td>
+        <div class="info-group">
+          <div class="label" data-day></div>
+          <div data-time></div>
+        </div>
+      </td>
+      <td>
+        <img data-icon class="weather-icon">
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Temp</div>
+          <div><span data-temp></span><span>&deg;C</span></div>
+          <div>&deg;C</div>
+        </div>
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Tajutav temp.</div>
+          <div><span data-fl-temp></span><span>&deg;C</span></div>
+        </div>
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Tuul</div>
+          <div> <span data-wind>38</span><span class="value-sub-info">km/h</span></div>
+        </div>
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Sademed</div>
+          <div><span data-precip>38</span><span class="value-sub-info"></span>mm</div>
+        </div>
+      </td>
+    </tr>
+  </template>
 
   <script type="module" src="/main.js"></script>
 </body>
