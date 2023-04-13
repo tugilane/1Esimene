@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ilmateate äpp</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body background="public/assets/pexels-aleksandar-pasaric-3629227.jpg">
+
+  <header class="header">
+
+    <div class="header-left" data-current-icon>
+      <img class="weather-icon large" src="public/assets/sunny.svg" type="image/svg+xml" data-current-icon>
+      <div class="header-current-temp">
+        <!--proovida ka <p> tagi spanide asemel--> <span class="currentNum" data-current-temp>31</span>&deg;C
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="info-group">
+        <div class="label">Kõrgeim temp.</div>
+        <div><span class="tempNum" data-current-high>32</span>&deg;C</div>
+      </div>
+      <div class="info-group">
+        <div class="label">Päikesetõus</div>
+        <div><span class="tempNum" data-current-sunrise>6:00</span></div>
+      </div>
+      <div class="info-group">
+        <div class="label">Tuul</div>
+        <div><span class="tempNum" data-current-wind>32</span><span class="value-sub-info">km/h</span></div>
+      </div>
+      <div class="info-group">
+        <div class="label">Madalaim temp.</div>
+        <div><span class="tempNum" data-current-low>32</span>&deg;C</div>
+      </div>
+      <div class="info-group">
+        <div class="label">Päikeseloojang</div>
+        <div><span class="tempNum" data-current-sunset>23:00</span></div>
+      </div>
+      <div class="info-group">
+        <div class="label">Vihma tõenäosus</div>
+        <div><span class="tempNum" data-current-precip>4</span><span class="value-sub-info">%</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="day-section" data-day-section>
+    <div class="day-card">
+      <img src="public/assets/cloudy.svg" alt="">
+      <div class="day-card-day">Esmaspäev</div>
+      <div>32&deg;C</div>
+    </div>
+    <div class="day-card">
+      <img src="public/assets/cloudy.svg" alt="">
+      <div class="day-card-day">Teisipäev</div>
+      <div>32&deg;C</div>
+    </div>
+    <div class="day-card">
+      <img src="public/assets/cloudy.svg" alt="">
+      <div class="day-card-day">Kolmapäev</div>
+      <div>32&deg;C</div>
+    </div>
+    <div class="day-card">
+      <img src="public/assets/cloudy.svg" alt="">
+      <div class="day-card-day">Neljapäev</div>
+      <div>32&deg;C</div>
+    </div>
+    <div class="day-card">
+      <img src="public/assets/cloudy.svg" alt="">
+      <div class="day-card-day">Reede</div>
+      <div>32&deg;C</div>
+    </div>
+    <div class="day-card">
+      <img src="public/assets/cloudy.svg" alt="">
+      <div class="day-card-day">Laupäev</div>
+      <div>32&deg;C</div>
+    </div>
+    <div class="day-card">
+      <img src="public/assets/cloudy.svg" alt="">
+      <div class="day-card-day">Pühapäev</div>
+      <div>32&deg;C</div>
+    </div>
+  </section>
+  <table class="hours-section">
+    <tbody data-hour-section>
+      <tr class="hour-now">
+        <td>
+          <div class="info-group">
+            <div class="label">Neljapäev</div>
+            <div>3 PM</div>
+          </div>
+        </td>
+        <td>
+          <img src="public/assets/cloudy.svg" alt="">
+        </td>
+        <td>
+          <div class="info-group">
+            <div class="label">Temp</div>
+            <div>31&deg;C</div>
+          </div>
+        </td>
+        <td>
+          <div class="info-group">
+            <div class="label">Tajutav temp.</div>
+            <div>31&deg;C</div>
+          </div>
+        </td>
+        <td>
+          <div class="info-group">
+            <div class="label">Tuul</div>
+            <div>31<span class="value-sub-info">km/h</span></div>
+          </div>
+        </td>
+        <td>
+          <div class="info-group">
+            <div class="label">Vihma tõenäosus</div>
+            <div>31<span class="value-sub-info"></span>%</div>
+          </div>
+        </td>
+        <td>
+          <div class="info-group">
+            <div class="label">Niiskus</div>
+            <div>31<span class="value-sub-info"></span>%</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<!--Templates-->	
+  <template id="day-card-template">
+    <div class="day-card">
+      <img data-current-icon>
+      <div class="day-card-day" data-date></div>
+      <div><span data-temp></span><span>&deg;C</span></div>
+    </div>
+  </template>
+  <template id="hour-row-template">
+    <tr class="hour-now">
+      <td>
+        <div class="info-group">
+          <div class="label" data-day></div>
+          <div data-time></div>
+        </div>
+      </td>
+      <td>
+        <img data-icon class="weather-icon">
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Temp.</div>
+          <div><span data-temp></span><span>&deg;C</span></div>
+          <div>&deg;C</div>
+        </div>
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Tajutav temp.</div>
+          <div><span data-fl-temp></span><span>&deg;C</span></div>
+        </div>
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Tuul</div>
+          <div> <span data-wind>38</span><span class="value-sub-info">km/h</span></div>
+        </div>
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Vihma tõenäosus</div>
+          <div><span data-precip>38</span><span class="value-sub-info"></span>%</div>
+        </div>
+      </td>
+      <td>
+        <div class="info-group">
+          <div class="label">Niiskus</div>
+          <div><span data-humidity>38</span><span class="value-sub-info"></span>%</div>
+        </div>
+      </td>
+    </tr>
+  </template>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
