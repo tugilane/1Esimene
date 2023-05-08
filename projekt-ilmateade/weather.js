@@ -3,7 +3,8 @@ import axios from "axios";
 // getting coordinates and .get current, daily, hourly data  
 
 export function getWeather(lat, lon, timezone) {
-    return axios.get("https://api.open-meteo.com/v1/forecast?&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&current_weather=true&timeformat=unixtime",
+    return axios.get("https://api.open-meteo.com/v1/forecast?&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&timeformat=unixtime&forecast_days=14&",
+    
         { 
             params : {
                  latitude: lat,

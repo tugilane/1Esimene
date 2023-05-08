@@ -1,7 +1,8 @@
 import { getWeather } from "./weather";
 import { ICON_MAP } from "./iconMap";
 
-getWeather(10, 10, Intl.DateTimeFormat().resolvedOptions().timeZone).then(renderWeather).catch(e => {
+
+getWeather(59.4370, 24.7536, Intl.DateTimeFormat().resolvedOptions().timeZone).then(renderWeather).catch(e => {
     console.error(e)
     alert("Error getting weather.")
 })
@@ -9,9 +10,9 @@ getWeather(10, 10, Intl.DateTimeFormat().resolvedOptions().timeZone).then(render
 
 
 function renderWeather({ current, daily, hourly}) {
-   /* renderCurrentWeather(current)
+    renderCurrentWeather(current)
     renderDailyWeather(daily)
-    renderHourlyWeather(hourly)  */
+    renderHourlyWeather(hourly) 
     document.body.classList.remove("blurred")
 }
 
@@ -45,8 +46,31 @@ function renderDailyWeather(daily) {
     daily.forEach(day => {
         const element = dayCardTemplate.content.cloneNode(true)
         setValue("temp;", day.maxTemp, {parent: element})
-        setValue("date;", DAY_FORMATTER.format(day.timestamp), {parent: element})
+   /* date time format */     setValue("date;", DAY_FORMATTER.format(day.timestamp), {parent: element})
         element.querySelector("[data-icon]").src = getIconUrl(day.iconCode)
         dailySection.append(element)
+
     })
+}
+
+
+    const HOUR_FORMATTER = new Intl.dateTimeFormat(undefined, {hour:
+        "numeric"})
+    const hourlySection = document.querySelector("data-hour-section")
+    const hourRowTemplate = document.getElementById("hour-row-template")
+    function renderHourlyWeather(hourly) {
+        hourlySection.HTML = ""
+        hourly.forEach(day => {
+            const element = dayCardTemplate.content.cloneNode(true)
+            setValue("temp;", hour.temp, {parent: element})
+            setValue("temp;", hour.feelsLike, {parent: element})
+            setValue("temp;", hour.windSpeed, {parent: element})
+            setValue("temp;", hour.precip, {parent: element})
+            setValue("temp;", hour.humidity, {parent: element})
+             setValue("day;", DAY_FORMATTER.format(hour.timestamp), {parent: element})
+             setValue("time;", DAY_FORMATTER.format(day.timestamp), {parent: element})
+            element.querySelector("[data-icon]").src = getIconUrl(hour.iconCode)
+            hourlySection.append(element)
+    
+        })
 }
