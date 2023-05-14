@@ -28,10 +28,14 @@ function shuffleArray(array) {
 
 function createCard(card) {
     return `
-      <div class="card">
-        <img src="${card.icon}" alt="card image">
-      </div>
+        
+        <img src="${card.icon}" alt="card image">   
     `;
+  }
+
+  function click(event) {
+    event.target.style.opacity = 1;
+    event.target.style.transition = "opacity 1s";
   }
 
 // displaying the cards
@@ -43,7 +47,8 @@ function displayCards() {
     for (let i = 0; i < cards.length; i++) {
       let cardElement = document.createElement("div");
       cardElement.classList.add("card");
-      cardElement.innerHTML = createCard(cards[i]);
+      cardElement.innerHTML = createCard(cards[i]); 
+      cardElement.addEventListener("click", click);
       gridElement.appendChild(cardElement);
     }
     outputElement.appendChild(gridElement);
@@ -51,4 +56,4 @@ function displayCards() {
 
 displayCards()
 
-console.log(cards)
+
