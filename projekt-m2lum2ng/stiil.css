@@ -17,5 +17,14 @@
     width: 120px;
     height: 120px;
     object-fit: cover;
+  }
+
+  .hidden {
     opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .visible {
+    opacity: 1;
+    transition: opacity 0.5s;
   }
