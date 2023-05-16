@@ -29,6 +29,7 @@ function createCard(card) {
   `;
 }
 
+// Hide and reveal image after click
 let currentPicture = null;
 
 function showPicture(element) {
