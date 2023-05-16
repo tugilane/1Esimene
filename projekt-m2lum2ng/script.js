@@ -11,7 +11,7 @@ for (let i = 1; i <= 24; i++) {
   cards.push({...card}); // Create a separate card object for the pair
 }
 
-// Shuffle the cards
+// Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
