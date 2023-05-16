@@ -5,7 +5,7 @@ for (let i = 1; i <= 24; i++) {
   let card = {
     icon: `./assets/picture${i}.png`,
     matched: false,
-    pairId: Math.ceil(i / 2) // Unique identifier for each pair
+    id: i
   };
   cards.push(card);
   cards.push({...card}); // Create a separate card object for the pair
@@ -24,63 +24,23 @@ shuffleArray(cards);
 
 // Create card elements
 function createCard(card) {
-  let visibilityClass = card.matched ? "visible" : "hidden";
   return `
-    <div class="card">
-      <img onclick="showPicture(this)" class="${visibilityClass}" data-pairId="${card.pairId}" src="${card.icon}" alt="card image">
-    </div>
+      <img onclick="showPicture(this)" data-pairId="${card.id}" class="hidden icon" src="${card.icon}">
   `;
 }
 
-let firstCard = null;
-let secondCard = null;
+let currentPicture = null;
 
-// Show picture when a card is clicked
 function showPicture(element) {
-  element.classList.remove('hidden');
-  element.classList.add('visible');
+    if (currentPicture) {
+        currentPicture.classList.remove('visible');
+        currentPicture.classList.add('hidden');
+    }
 
-  if (!firstCard) {
-    firstCard = element;
-  } else if (!secondCard) {
-    secondCard = element;
-    checkMatch();
-  }
-}
+    element.classList.remove('hidden');
+    element.classList.add('visible');
 
-function checkMatch() {
-  if (firstCard.dataset.pairId === secondCard.dataset.pairId) {
-    // Match found
-    let pairId = firstCard.dataset.pairId;
-    let matchingCards = document.querySelectorAll(`[data-pairId="${pairId}"]`);
-    matchingCards.forEach(card => {
-      card.classList.remove('hidden');
-      card.classList.add('visible');
-    });
-    cards.forEach(card => {
-      if (card.pairId === pairId) {
-        card.matched = true;
-      }
-    });
-  } else {
-    // Not a match
-    setTimeout(() => {
-      firstCard.classList.remove('visible');
-      firstCard.classList.add('hidden');
-      secondCard.classList.remove('visible');
-      secondCard.classList.add('hidden');
-    }, 1000);
-  }
-
-  firstCard = null;
-  secondCard = null;
-}
-
-// Check if all pairs are matched
-if (cards.every(card => card.matched)) {
-  setTimeout(() => {
-    alert('Congratulations! You have matched all pairs.');
-  }, 500);
+    currentPicture = element;
 }
 
 // Display the cards
@@ -91,9 +51,12 @@ function displayCards() {
   for (let i = 0; i < cards.length; i++) {
     let cardElement = document.createElement("div");
     cardElement.innerHTML = createCard(cards[i]);
+    cardElement.classList.add("card");
     gridElement.appendChild(cardElement);
   }
   outputElement.appendChild(gridElement);
 }
 
 displayCards();
+
+console.log(cards)
