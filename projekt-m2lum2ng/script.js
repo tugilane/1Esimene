@@ -32,29 +32,27 @@ function createCard(card) {
 let currentPicture = null;
 
 function showPicture(element) {
+  
+    element.classList.remove('hidden');
+    element.classList.add('visible');
+
     if (currentPicture) {
         currentPicture.classList.remove('visible');
         currentPicture.classList.add('hidden');
     }
-
-    element.classList.remove('hidden');
-    element.classList.add('visible');
 
     currentPicture = element;
 }
 
 // Display the cards
 function displayCards() {
-  let gridElement = document.createElement("div");
-  gridElement.classList.add("grid-container");
-  let outputElement = document.querySelector(".output");
+  let outputElement = document.querySelector(".grid-container");
   for (let i = 0; i < cards.length; i++) {
     let cardElement = document.createElement("div");
     cardElement.innerHTML = createCard(cards[i]);
     cardElement.classList.add("card");
-    gridElement.appendChild(cardElement);
+    outputElement.appendChild(cardElement);
   }
-  outputElement.appendChild(gridElement);
 }
 
 displayCards();
