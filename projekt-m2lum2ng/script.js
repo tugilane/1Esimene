@@ -30,19 +30,17 @@ function createCard(card) {
 }
 
 // Hide and reveal image after click
-let currentPicture = null;
+
 
 function showPicture(element) {
   
     element.classList.remove('hidden');
     element.classList.add('visible');
+    
+    if (!firstCard) {
+      let firstCardElement = element;
 
-    if (currentPicture) {
-        currentPicture.classList.remove('visible');
-        currentPicture.classList.add('hidden');
     }
-
-    currentPicture = element;
 }
 
 // Display the cards
