@@ -8,7 +8,7 @@ for (let i = 1; i <= 24; i++) {
     id: i
   };
   cards.push(card);
-  cards.push({...card}); // Create a separate card object for the pair
+  cards.push({ ...card }); // Create a separate card object for the pair
 }
 
 // Fisher-Yates shuffle algorithm
@@ -20,7 +20,8 @@ function shuffleArray(array) {
   return array;
 }
 
-shuffleArray(cards);
+let shuffledArray = shuffleArray(cards);
+console.log(shuffledArray)
 
 // Create card elements
 function createCard(card) {
@@ -29,18 +30,35 @@ function createCard(card) {
   `;
 }
 
-// Hide and reveal image after click
-
+// Hide or reveal image
+let currentPicture = null;
 
 function showPicture(element) {
-  
-    element.classList.remove('hidden');
-    element.classList.add('visible');
-    
-    if (!firstCard) {
-      let firstCardElement = element;
+  let card1 = ''
+  let card2 = ''
+  let currentPicture = element;
+  element.classList.remove('hidden');
+  element.classList.add('visible');
 
+  if (currentPicture) {
+    card1 = currentPicture;
+    console.log(card1)
+  } else {
+    currentPicture = element;
+  }
+  if (card1) {
+    card2 = element
+    result = checkCard(card1,card2)
+    if(result){
+      alert("match")
+    }else{
+      alert("no")
     }
+  }
+
+
+
+
 }
 
 // Display the cards
@@ -57,3 +75,12 @@ function displayCards() {
 displayCards();
 
 console.log(cards)
+
+function checkCard(card1, card2) {
+  if (card1.getAttribute("data-pairId") == card2.getAttribute("data-pairId")) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
