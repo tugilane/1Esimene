@@ -34,20 +34,22 @@ function createCard(card) {
 let currentPicture = null;
 
 function showPicture(element) {
-  let card1 = ''
-  let card2 = ''
-  let currentPicture = element;
+  let card1 = '';
+  let card2 = '';
   element.classList.remove('hidden');
   element.classList.add('visible');
 
   if (currentPicture) {
+    currentPicture.classList.remove('visible');
+    currentPicture.classList.add('hidden');
     card1 = currentPicture;
     console.log(card1)
   } else {
     currentPicture = element;
   }
   if (card1) {
-    card2 = element
+    card2 = element;
+    let result;
     result = checkCard(card1,card2)
     if(result){
       alert("match")
@@ -64,17 +66,15 @@ function showPicture(element) {
 // Display the cards
 function displayCards() {
   let outputElement = document.querySelector(".grid-container");
-  for (let i = 0; i < cards.length; i++) {
+  for (let i = 0; i < shuffledArray.length; i++) {
     let cardElement = document.createElement("div");
-    cardElement.innerHTML = createCard(cards[i]);
+    cardElement.innerHTML = createCard(shuffledArray[i]);
     cardElement.classList.add("card");
     outputElement.appendChild(cardElement);
   }
 }
 
 displayCards();
-
-console.log(cards)
 
 function checkCard(card1, card2) {
   if (card1.getAttribute("data-pairId") == card2.getAttribute("data-pairId")) {
