@@ -32,30 +32,38 @@ function createCard(card) {
 
 // Hide or reveal image
 let currentPicture = null;
+let card1 = '';
+let card2 = '';
 
 function showPicture(element) {
-  let card1 = '';
-  let card2 = '';
+  
   element.classList.remove('hidden');
   element.classList.add('visible');
 
-  if (currentPicture) {
-    currentPicture.classList.remove('visible');
-    currentPicture.classList.add('hidden');
+  if (!currentPicture) {
+    currentPicture = element;
     card1 = currentPicture;
     console.log(card1)
+    return card1, currentPicture;
   } else {
-    currentPicture = element;
-  }
-  if (card1) {
     card2 = element;
-    let result;
-    result = checkCard(card1,card2)
+    console.log(card2)
+    let result = checkCard(card1, card2)
     if(result){
       alert("match")
     }else{
       alert("no")
     }
+
+    card1.classList.remove('visible');
+    card1.classList.add('hidden');
+    card2.classList.remove('visible');
+    card2.classList.add('hidden');
+
+    currentPicture = null;
+    card1 = '';
+    return currentPicture, card1;
+    
   }
 
 
@@ -66,9 +74,9 @@ function showPicture(element) {
 // Display the cards
 function displayCards() {
   let outputElement = document.querySelector(".grid-container");
-  for (let i = 0; i < shuffledArray.length; i++) {
+  for (let i = 0; i < cards.length; i++) {
     let cardElement = document.createElement("div");
-    cardElement.innerHTML = createCard(shuffledArray[i]);
+    cardElement.innerHTML = createCard(cards[i]);
     cardElement.classList.add("card");
     outputElement.appendChild(cardElement);
   }
@@ -76,8 +84,10 @@ function displayCards() {
 
 displayCards();
 
+console.log(cards)
+
 function checkCard(card1, card2) {
-  if (card1.getAttribute("data-pairId") == card2.getAttribute("data-pairId")) {
+  if (card1.getAttribute("data-pairId") === card2.getAttribute("data-pairId")) {
     return true;
   }
   else {
