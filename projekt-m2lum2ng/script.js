@@ -26,7 +26,7 @@ console.log(shuffledArray)
 // Create card elements
 function createCard(card) {
   return `
-      <img onclick="showPicture(this)" data-pairId="${card.id}" class="hidden icon" src="${card.icon}">
+      <img onclick="showPicture(this)" data-pairId="${card.id}" data-pairMatch="notmatch" class="hidden icon" src="${card.icon}">
   `;
 }
 
@@ -36,13 +36,19 @@ let card1 = '';
 let card2 = '';
 
 function showPicture(element) {
-  
+  if (element.getAttribute("data-pairMatch") === "match") {
+
+  } else {
   element.classList.remove('hidden');
   element.classList.add('visible');
-
+  if (card2 === !"match") {
+  card2.classList.remove('visible');
+  card2.classList.add('hidden');
+}
   if (!currentPicture) {
     currentPicture = element;
     card1 = currentPicture;
+    console.log(card1)
     console.log(card1)
     return card1, currentPicture;
   } else {
@@ -51,24 +57,24 @@ function showPicture(element) {
     let result = checkCard(card1, card2)
     if(result){
       alert("match")
+      card2.classList.remove('hidden')
+      card2.classList.remove('visible')
+      card2 = "match";
     }else{
-      alert("no")
-    }
-
+      alert("no")    
     card1.classList.remove('visible');
     card1.classList.add('hidden');
-    card2.classList.remove('visible');
-    card2.classList.add('hidden');
+    }
+
+
+
 
     currentPicture = null;
     card1 = '';
-    return currentPicture, card1;
+    return currentPicture, card1, card2;
     
   }
-
-
-
-
+}
 }
 
 // Display the cards
@@ -88,7 +94,9 @@ console.log(cards)
 
 function checkCard(card1, card2) {
   if (card1.getAttribute("data-pairId") === card2.getAttribute("data-pairId")) {
-    return true;
+card1.dataset.pairMatch = "match"
+card2.dataset.pairMatch = "match"
+    return true, card1, card2;
   }
   else {
     return false;
