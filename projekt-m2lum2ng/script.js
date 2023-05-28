@@ -31,7 +31,6 @@ function createCard(card) {
 }
 
 // Hide or reveal image
-let currentPicture = null;
 let card1 = '';
 let card2 = '';
 
@@ -41,41 +40,37 @@ function showPicture(element) {
   } else {
   element.classList.remove('hidden');
   element.classList.add('visible');
-  if (card2 === !"match") {
-  card2.classList.remove('visible');
-  card2.classList.add('hidden');
+
 }
-  if (!currentPicture) {
-    currentPicture = element;
-    card1 = currentPicture;
-    console.log(card1)
-    console.log(card1)
-    return card1, currentPicture;
+  if (!card1) {
+    card1 = element;
+    return card1;
+    
   } else {
     card2 = element;
-    console.log(card2)
-    let result = checkCard(card1, card2)
+    let result = checkCard(card1, card2);
     if(result){
       alert("match")
-      card2.classList.remove('hidden')
-      card2.classList.remove('visible')
-      card2 = "match";
+      card1 = '';
+      card2 = '';
+
     }else{
       alert("no")    
+    setTimeout(function(card1, card2) { 
     card1.classList.remove('visible');
     card1.classList.add('hidden');
-    }
-
-
-
-
-    currentPicture = null;
+    card2.classList.remove('visible');
+    card2.classList.add("hidden");
+    }, 1000)
     card1 = '';
-    return currentPicture, card1, card2;
-    
+    card2 = '';
+
+    }
   }
+
+  element = null;
 }
-}
+
 
 // Display the cards
 function displayCards() {
@@ -102,3 +97,4 @@ card2.dataset.pairMatch = "match"
     return false;
   }
 }
+
