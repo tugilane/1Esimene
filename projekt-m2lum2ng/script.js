@@ -1,5 +1,6 @@
 // Array of cards
 let cards = [];
+let pairs = [];
 
 for (let i = 1; i <= 24; i++) {
   let card = {
@@ -21,56 +22,53 @@ function shuffleArray(array) {
 }
 
 let shuffledArray = shuffleArray(cards);
-console.log(shuffledArray)
+console.log(shuffledArray);
 
 // Create card elements
 function createCard(card) {
   return `
-      <img onclick="showPicture(this)" data-pairId="${card.id}" data-pairMatch="notmatch" class="hidden icon" src="${card.icon}">
+    <img onclick="showPicture(this)" data-pairId="${card.id}" data-pairMatch="notmatch" class="hidden icon" src="${card.icon}">
   `;
 }
 
 // Hide or reveal image
-let card1 = '';
-let card2 = '';
+let card1 = null;
+let card2 = null;
 
 function showPicture(element) {
   if (element.getAttribute("data-pairMatch") === "match") {
+    return;
+  }
 
-  } else {
   element.classList.remove('hidden');
   element.classList.add('visible');
 
-}
   if (!card1) {
     card1 = element;
-    return card1;
-    
   } else {
     card2 = element;
     let result = checkCard(card1, card2);
-    if(result){
-      alert("match")
-      card1 = '';
-      card2 = '';
-
-    }else{
-      alert("no")    
-    setTimeout(function(card1, card2) { 
-    card1.classList.remove('visible');
-    card1.classList.add('hidden');
-    card2.classList.remove('visible');
-    card2.classList.add("hidden");
-    }, 1000)
-    card1 = '';
-    card2 = '';
-
+    if (result) {
+      alert("match");
+      card1 = null;
+      card2 = null;
+      console.log(pairs)
+    } else {
+      setTimeout(function() { 
+        if (card1 !== null && card2 !== null) {
+          card1.classList.remove('visible');
+          card1.classList.add('hidden');
+          card2.classList.remove('visible');
+          card2.classList.add('hidden');
+          card1 = null;
+          card2 = null;
+        }
+      }, 300);
     }
   }
 
   element = null;
 }
-
 
 // Display the cards
 function displayCards() {
@@ -85,16 +83,22 @@ function displayCards() {
 
 displayCards();
 
-console.log(cards)
+console.log(cards);
 
 function checkCard(card1, card2) {
   if (card1.getAttribute("data-pairId") === card2.getAttribute("data-pairId")) {
-card1.dataset.pairMatch = "match"
-card2.dataset.pairMatch = "match"
-    return true, card1, card2;
-  }
-  else {
+    card1.dataset.pairMatch = "match";
+    card2.dataset.pairMatch = "match";
+    pairs.push(card1);
+    pairs.push(card2);
+
+    return true;
+  } else {
     return false;
   }
-}
+}  
 
+// kuhu lisada?
+if (pairs.length === 48) {
+      alert("Palju õnne, võitsid mängu.");
+    }
