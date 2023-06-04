@@ -49,10 +49,12 @@ function showPicture(element) {
     card2 = element;
     let result = checkCard(card1, card2);
     if (result) {
-      alert("match");
+      // alert match
+      showNotification()
       card1 = null;
       card2 = null;
       console.log(pairs)
+       // Check if all pairs are matched?
     } else {
       setTimeout(function() { 
         if (card1 !== null && card2 !== null) {
@@ -89,8 +91,11 @@ function checkCard(card1, card2) {
   if (card1.getAttribute("data-pairId") === card2.getAttribute("data-pairId")) {
     card1.dataset.pairMatch = "match";
     card2.dataset.pairMatch = "match";
+    card1.removeAttribute("onclick");
+    card2.removeAttribute("onclick");
     pairs.push(card1);
     pairs.push(card2);
+
 
     return true;
   } else {
@@ -98,7 +103,13 @@ function checkCard(card1, card2) {
   }
 }  
 
-// kuhu lisada?
-if (pairs.length === 48) {
-      alert("Palju õnne, võitsid mängu.");
-    }
+// show text
+let notification1 = document.getElementById("notification"); 
+function showNotification(){
+  notification1.classList.remove('hidden')
+  notification1.classList.add('visible')
+  setTimeout(function() {
+      notification1.classList.remove('visible');
+      notification1.classList.add('hidden');
+  }, 1000);
+}

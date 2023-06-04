@@ -1,11 +1,19 @@
+body {
+  background-image: url("assets/southparkwallpaper.jpeg");
+}
+
+section {
+  display: flex;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(8, 120px);
     grid-template-rows: repeat(6, 120px);
     grid-gap: 5px;
     box-sizing: content-box;
-    margin-left: auto;
-    max-width: 1214px;    
+    margin-left: 47rem;
+    max-width: 1214px; 
   }
   
 .card {
@@ -29,3 +37,25 @@
     opacity: 1;
     transition: opacity 0.3s;
   }
+
+  .notification {
+  color: red;  
+  font-family: "Fredoka";
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+.headers {
+margin-left: 5rem;
+}
+
+h1 {
+  color: lightgray;
+  font-family: "Fredoka";
+}
+
+h2 {
+  color: lightgray;
+  font-family: "Fredoka";
+} 
