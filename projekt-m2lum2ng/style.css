@@ -6,6 +6,20 @@ section {
   display: flex;
 }
 
+.headers {
+margin-left: 5rem;
+}
+
+h1 {
+  color: lightgray;
+  font-family: "Fredoka";
+}
+
+h2 {
+  color: lightgray;
+  font-family: "Fredoka";
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(8, 120px);
@@ -28,17 +42,17 @@ section {
 
   }
 
+/* CSS for hiding cards and notification */ 
   .hidden {
     opacity: 0;
     transition: opacity 0.3s;
   }
-
   .visible {
     opacity: 1;
     transition: opacity 0.3s;
   }
 
-  .notification {
+.notification {
   color: red;  
   font-family: "Fredoka";
   font-weight: bold;
@@ -46,16 +60,6 @@ section {
   margin-right: auto;
   }
 
-.headers {
-margin-left: 5rem;
-}
 
-h1 {
-  color: lightgray;
-  font-family: "Fredoka";
-}
 
-h2 {
-  color: lightgray;
-  font-family: "Fredoka";
-} 
+

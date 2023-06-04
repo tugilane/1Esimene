@@ -1,7 +1,7 @@
-// Array of cards
 let cards = [];
 let pairs = [];
 
+// creating the pairs 
 for (let i = 1; i <= 24; i++) {
   let card = {
     icon: `./assets/picture${i}.png`,
@@ -9,10 +9,10 @@ for (let i = 1; i <= 24; i++) {
     id: i
   };
   cards.push(card);
-  cards.push({ ...card }); // Create a separate card object for the pair
+  cards.push({ ...card });
 }
 
-// Fisher-Yates shuffle algorithm
+// Shuffling the cards with Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -24,14 +24,14 @@ function shuffleArray(array) {
 let shuffledArray = shuffleArray(cards);
 console.log(shuffledArray);
 
-// Create card elements
+// Creating card HTML
 function createCard(card) {
   return `
     <img onclick="showPicture(this)" data-pairId="${card.id}" data-pairMatch="notmatch" class="hidden icon" src="${card.icon}">
   `;
 }
 
-// Hide or reveal image
+// Game logic
 let card1 = null;
 let card2 = null;
 
@@ -53,8 +53,6 @@ function showPicture(element) {
       showNotification()
       card1 = null;
       card2 = null;
-      console.log(pairs)
-       // Check if all pairs are matched?
     } else {
       setTimeout(function() { 
         if (card1 !== null && card2 !== null) {
@@ -72,6 +70,32 @@ function showPicture(element) {
   element = null;
 }
 
+// Check for a pair function
+function checkCard(card1, card2) {
+  if (card1.getAttribute("data-pairId") === card2.getAttribute("data-pairId")) {
+    card1.dataset.pairMatch = "match";
+    card2.dataset.pairMatch = "match";
+    card1.removeAttribute("onclick");
+    card2.removeAttribute("onclick");
+    pairs.push(card1);
+    pairs.push(card2);
+    return true;
+  } else {
+    return false;
+  }
+} 
+
+// show text when pair found
+let notification1 = document.getElementById("notification"); 
+function showNotification(){
+  notification1.classList.remove('hidden')
+  notification1.classList.add('visible')
+  setTimeout(function() {
+      notification1.classList.remove('visible');
+      notification1.classList.add('hidden');
+  }, 1000);
+}
+
 // Display the cards
 function displayCards() {
   let outputElement = document.querySelector(".grid-container");
@@ -85,31 +109,6 @@ function displayCards() {
 
 displayCards();
 
-console.log(cards);
-
-function checkCard(card1, card2) {
-  if (card1.getAttribute("data-pairId") === card2.getAttribute("data-pairId")) {
-    card1.dataset.pairMatch = "match";
-    card2.dataset.pairMatch = "match";
-    card1.removeAttribute("onclick");
-    card2.removeAttribute("onclick");
-    pairs.push(card1);
-    pairs.push(card2);
+ 
 
 
-    return true;
-  } else {
-    return false;
-  }
-}  
-
-// show text
-let notification1 = document.getElementById("notification"); 
-function showNotification(){
-  notification1.classList.remove('hidden')
-  notification1.classList.add('visible')
-  setTimeout(function() {
-      notification1.classList.remove('visible');
-      notification1.classList.add('hidden');
-  }, 1000);
-}
