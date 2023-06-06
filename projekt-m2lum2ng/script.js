@@ -5,7 +5,6 @@ let pairs = [];
 for (let i = 1; i <= 24; i++) {
   let card = {
     icon: `./assets/picture${i}.png`,
-    matched: false,
     id: i
   };
   cards.push(card);
@@ -27,7 +26,7 @@ console.log(shuffledArray);
 // Creating card HTML
 function createCard(card) {
   return `
-    <img onclick="showPicture(this)" data-pairId="${card.id}" data-pairMatch="notmatch" class="hidden icon" src="${card.icon}">
+    <img onclick="showPicture(this)" data-pairId="${card.id}" class="hidden icon" src="${card.icon}">
   `;
 }
 
@@ -79,6 +78,7 @@ function checkCard(card1, card2) {
     card2.removeAttribute("onclick");
     pairs.push(card1);
     pairs.push(card2);
+    console.log(pairs)
     return true;
   } else {
     return false;
@@ -88,12 +88,18 @@ function checkCard(card1, card2) {
 // show text when pair found
 let notification1 = document.getElementById("notification"); 
 function showNotification(){
+ if (pairs.length === 48 ) {
+  notification1.textContent = "Palju Õnne, võitsid mängu!!!";
+  notification1.classList.remove('hidden')
+  notification1.classList.add('visible')
+ } else {
   notification1.classList.remove('hidden')
   notification1.classList.add('visible')
   setTimeout(function() {
       notification1.classList.remove('visible');
       notification1.classList.add('hidden');
   }, 1000);
+}
 }
 
 // Display the cards
